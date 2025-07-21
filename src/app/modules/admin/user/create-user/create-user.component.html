@@ -1,0 +1,84 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-4 h-[30em] md:h-full h-screem overflow-auto "  >
+    <h2 class="text-lg font-semibold mb-4">Crear Usuario</h2>
+
+    <mat-form-field appearance="outline" class="w-full md:col-span-2">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput formControlName="nombreCompleto" required>
+        <mat-error *ngIf="form.get('nombreCompleto')?.hasError('required')">
+            El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreCompleto')?.hasError('minlength')">
+            Mínimo 3 caracteres
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+            El email es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+            Email inválido
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+            La contraseña es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+            Mínimo 6 caracteres
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full md:col-span-2">
+        <mat-label>País</mat-label>
+        <input type="text" matInput formControlName="pais" [matAutocomplete]="autoPais" required>
+        <mat-autocomplete #autoPais="matAutocomplete">
+            <mat-option *ngFor="let pais of filteredPaises | async" [value]="pais">
+                {{ pais }}
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="form.get('pais')?.hasError('required')">
+            El país es obligatorio
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Tipo de Usuario</mat-label>
+        <mat-select formControlName="tipoUsuario" required>
+            <mat-option value="" disabled>Seleccione un tipo</mat-option>
+            <mat-option value="Administrador">Administrador</mat-option>
+            <mat-option value="Operador">Operador</mat-option>
+            <mat-option value="Cliente">Cliente</mat-option>
+            <!-- Agrega más opciones si lo necesitas -->
+        </mat-select>
+        <mat-error *ngIf="form.get('tipoUsuario')?.hasError('required')">
+            El tipo de usuario es obligatorio
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Estado del Usuario</mat-label>
+        <mat-select formControlName="activo" required>
+            <mat-option value="" disabled>Seleccione un tipo</mat-option>
+            <mat-option value="true">Activo</mat-option>
+            <mat-option value="false">Inactivo</mat-option>
+            <!-- Agrega más opciones si lo necesitas -->
+        </mat-select>
+        <mat-error *ngIf="form.get('activo')?.hasError('required')">
+            Estado del Usuario es obligatorio
+        </mat-error>
+    </mat-form-field>
+
+    <div class="flex justify-end space-x-2 mt-4">
+        <button mat-stroked-button type="button" (click)="onCancel()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+    </div>
+</form>

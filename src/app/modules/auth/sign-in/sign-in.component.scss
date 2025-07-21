@@ -1,0 +1,21 @@
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-slide {
+  animation: slideFade 30s infinite;
+}

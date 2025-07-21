@@ -1,0 +1,47 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <!-- Bienvenida -->
+        <div class="flex items-center bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 shadow-lg mb-8">
+            <!-- SVG llamativo -->
+            <div class="w-24 h-24 mr-8 flex-shrink-0">
+                <!-- Puedes cambiar este SVG por otro que te guste -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#fff" stroke="#6366f1" stroke-width="4" />
+                    <path d="M50 30a15 15 0 1 1 0 30a15 15 0 1 1 0-30z" fill="#6366f1" />
+                    <path d="M30 70c0-11 18-11 18-11s18 0 18 11v5H30v-5z" fill="#6366f1" />
+                </svg>
+            </div>
+            <!-- Texto de bienvenida -->
+            <div>
+                <h1 class="text-3xl font-bold text-white mb-2">¡Bienvenido, {{ nombreCompleto }}!</h1>
+                <p class="text-lg text-white opacity-80">Nos alegra tenerte de vuelta en tu panel de control.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-100 rounded-2xl shadow-lg p-6">
+                <h1 class="text-4xl text-red-500 text-center font-semibold mb-4">
+
+                    Productos pensados y diseñados especialmente para ti
+
+                </h1>
+                <h3 class="text-2xl text-grey-500 text-center font-semibold mb-4">
+                    Para ahorrar, comprar o invertir, contamos con todo lo que necesitas para Ser Feliz.
+                </h3>
+                <!-- Botón de redirección -->
+                <div class="flex justify-center mt-6">
+                    <a href="https://bancoserfinanza.com/#" target="_blank" rel="noopener noreferrer">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow">
+                            Ir a Banco Serfinanza
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="z-10 relative w-full max-w-2xl">
+                <img [src]="images[mostrarImagen]" class="w-full h-full object-cover rounded-2xl" />
+            </div>
+
+        </div>
+
+    </div>
+</div>
